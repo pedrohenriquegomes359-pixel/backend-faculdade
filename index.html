@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JORNADA</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+<style>
+body { font-family: 'Press Start 2P', cursive; margin:0; padding:0; background:#1a1a1a; color:#fdfcfc; }
+header { display:flex; justify-content:center; align-items:center; flex-direction:column; text-align:center; padding:2rem 1rem; border-bottom:4px solid #fff; text-shadow:2px 2px #000; background-image:url('https://i.pinimg.com/736x/a6/5c/db/a65cdb666647aca02e1d498c278f1754.jpg'); background-repeat:repeat; background-size:190px 160px; }
+h1,h2 { margin:0.5rem 0; text-shadow:4px 4px #000; }
+.container { max-width:1000px; margin:2rem auto; padding:1rem; background:#333; border:4px solid #fff; border-radius:0; box-shadow:0 0 20px #ff6f61; }
+button { background:#e10303; color:#fff; border:2px solid #010101; padding:0.7rem 1.5rem; border-radius:0; cursor:pointer; margin-top:1rem; font-size:14px; font-family:'Press Start 2P', cursive; text-transform:uppercase; transition:0.2s; }
+button:hover { background:#ff4b3f; box-shadow:0 0 10px #fff; }
+input, select, textarea { width:100%; padding:0.5rem; margin:0.5rem 0; border-radius:0; border:2px solid #fff; background:#222; color:#fff; font-family:'Press Start 2P', cursive; }
+ul { list-style:none; padding:0; }
+li { padding:0.5rem 0; border-bottom:1px dotted #fff; cursor:pointer; }
+.completed { color:#00ff00; }
+.pending { color:#ffff00; }
+.section { display:none; }
+.active { display:block; }
+.quiz { margin:1rem 0; padding:0.5rem; border:2px solid #fff; background:#111; }
+input[type="checkbox"], input[type="radio"] { width:16px; height:16px; accent-color:#ff6f61; }
+::-webkit-scrollbar { width:12px; }
+::-webkit-scrollbar-track { background:#222; }
+::-webkit-scrollbar-thumb { background-color:#ff6f61; border:2px solid #fff; }
+#checklistList li { position:relative; padding-left:30px; }
+#checklistList li.completed::before, #checklistList li.pending::before { content:""; position:absolute; left:0; top:50%; transform:translateY(-50%); width:20px; height:20px; border:2px solid #fff; background:#222; display:inline-block; }
+#checklistList li.completed::before { background:#00ff00; }
+#checklistList li.pending::before { background:#ffff00; }
+</style>
+</head>
+<body>
+
+<header>
+<h1>Bem-vindo à primeira fase!</h1>
+<p>Prepare-se, para um treinamento completo da Air Bla!</p>
+</header>
+
+
+
+
+<div class="container">
+
+
+<!-- Página Inicial -->
+<div id="inicio" class="section active">
+<h2>Início</h2>
+<p>Bem-vindo(a) ao onboarding da Air Bla! Neste treinamento você conhecerá toda a cultura, processos e práticas da empresa. Prepare-se para se tornar um colaborador plenamente integrado e capaz de aplicar os conhecimentos no dia a dia.</p>
+<p>Clique abaixo para começar sua jornada.</p>
+<button onclick="nextSection('perfil')">start</button>
+</div>
+
+<!-- Perfil do Colaborador -->
+<div id="perfil" class="section">
+<h2>Perfil do Colaborador</h2>
+<form id="formPerfil">
+<label>Nome:</label>
+<input type="text" id="nome" required>
+<label>Email:</label>
+<input type="email" id="email" required>
+<label>Setor:</label>
+<input type="text" id="setor" required>
+<label>Gestor:</label>
+<input type="text" id="gestor" required>
+<label>Upload de Documento:</label>
+<input type="file" id="documento" required>
+<button type="button" onclick="validarPerfil()">Próximo</button>
+</form>
+</div>
+
+<!-- Checklist -->
+<div id="checklist" class="section">
+<h2>Missões</h2>
+<ul id="checklistList"></ul>
+<button onclick="nextSection('treinamentos')">Próximo</button>
+</div>
+
+<!-- Lista de Treinamentos -->
+<div id="treinamentos" class="section">
+<h2>Treinamentos</h2>
+<ul id="treinamentosList"></ul>
+</div>
+
+<!-- Módulos 1 a 20 -->
+
+<!-- Módulo 1 -->
+<div id="treinamento1" class="section">
+<h2>Introdução à Cultura da Air Bla</h2>
+<p>Este módulo detalha a história da Air Bla desde sua fundação até os dias atuais, mostrando como os valores e princípios evoluíram para moldar a cultura corporativa.</p>
+<p>A cultura da empresa é baseada em colaboração, inovação e respeito ao indivíduo. Entender isso é essencial para alinhar suas ações com a missão da organização.</p>
+<p>Você verá exemplos de decisões estratégicas que refletem esses valores e aprenderá como aplicá-los no cotidiano.</p>
+<p>Exercício prático: escreva três maneiras pelas quais você pode incorporar a cultura da Air Bla em suas tarefas diárias.</p>
+<p>Incluímos casos fictícios de colaboradores que aplicaram a cultura de forma inovadora e seus resultados impactantes.</p>
+<p>Abordaremos também políticas internas, comportamentos esperados e ética corporativa.</p>
+<p>Reflexão: analise um conflito comum no ambiente de trabalho e identifique como os princípios da empresa podem resolver a situação.</p>
+<p>Você encontrará dicas para comunicação assertiva, colaboração em equipe e engajamento com diferentes setores.</p>
+<p>Histórias internas mostram como pequenas ações de colaboradores levaram a grandes melhorias nos processos internos.</p>
+<p>Ao final deste módulo, você terá uma compreensão profunda do que significa “ser Air Bla” e como isso guia suas decisões diárias.</p>
+<button onclick="nextSection('treinamento2')">Próximo</button>
+</div>
+
+<!-- Módulo 2 -->
+<div id="treinamento2" class="section">
+<h2>Políticas e Procedimentos Internos</h2>
+<p>Este módulo explica todas as políticas, normas e procedimentos internos que você precisa conhecer para atuar de forma segura e eficiente.</p>
+<p>Inclui regulamentos sobre uso de equipamentos, horários de trabalho, comportamento no escritório e diretrizes de segurança.</p>
+<p>Exercício: identifique três políticas que você considera mais relevantes para o seu setor e explique por quê.</p>
+<p>Histórias fictícias mostram situações em que o cumprimento ou violação de políticas afetou resultados de projetos.</p>
+<p>Detalhamos processos de aprovação, comunicação formal e protocolos de emergência.</p>
+<p>Também incluímos exemplos de boas práticas adotadas por equipes de sucesso.</p>
+<p>Reflexão: como você aplicaria essas políticas ao lidar com um problema inesperado em seu setor?</p>
+<p>Abordagem prática: dicas de como documentar tarefas e comunicar ocorrências de forma eficiente.</p>
+<p>Este módulo prepara você para agir dentro dos padrões da empresa e evitar erros comuns.</p>
+<p>Ao final, você saberá navegar pelos processos internos com confiança e precisão.</p>
+<button onclick="nextSection('treinamento3')">Próximo</button>
+<button onclick="nextSection('treinamento1')">Anterior</button>
+</div>
+
+<!-- Módulo 3 -->
+<div id="treinamento3" class="section">
+<h2>Segurança e Normas de TI</h2>
+<p>Aprenda práticas de segurança digital essenciais, proteção de dados e normas de TI aplicáveis na Air Bla.</p>
+<p>Incluímos exemplos de incidentes fictícios para demonstrar consequências de falhas de segurança.</p>
+<p>Exercício: crie uma lista de cinco hábitos seguros para proteger informações confidenciais da empresa.</p>
+<p>O módulo abrange políticas de senha, uso de e-mails corporativos e armazenamento seguro de arquivos.</p>
+<p>Histórias fictícias de equipes que implementaram soluções seguras mostram o impacto positivo na operação.</p>
+<p>Dicas práticas incluem backups, atualização de softwares e prevenção de ataques de phishing.</p>
+<p>Você aprenderá a identificar riscos, reportá-los e seguir protocolos de TI.</p>
+<p>Reflexão: como você reagiria a uma tentativa de acesso não autorizado a sistemas internos?</p>
+<p>Exercícios práticos incluem simulação de resposta a incidentes e checklist de segurança.</p>
+<p>Ao final, você estará preparado para atuar com responsabilidade digital e proteger ativos críticos.</p>
+<button onclick="nextSection('treinamento4')">Próximo</button>
+<button onclick="nextSection('treinamento2')">Anterior</button>
+</div>
+
+<!-- Módulo 4 -->
+<div id="treinamento4" class="section">
+<h2>Ética e Conduta Profissional</h2>
+<p>Este módulo ensina princípios de ética, integridade e conduta profissional esperados na Air Bla.</p>
+<p>Você verá exemplos fictícios de decisões éticas e dilemas que podem surgir no dia a dia.</p>
+<p>Exercício: descreva uma situação ética que você já presenciou ou imaginou e como aplicaria os princípios aprendidos.</p>
+<p>Abordamos compliance, relacionamento com colegas, clientes e fornecedores.</p>
+<p>Histórias mostram como ações éticas impactam positivamente a reputação da empresa.</p>
+<p>Reflexão: identifique situações onde é necessário tomar decisões éticas e explique como agir.</p>
+<p>Dicas incluem comunicação transparente, responsabilidade pessoal e respeito às normas.</p>
+<p>Ao final, você saberá diferenciar condutas apropriadas de atitudes que podem prejudicar a organização.</p>
+<p>O módulo reforça a importância da ética como guia para decisões estratégicas e operacionais.</p>
+<p>Você aprenderá como lidar com conflitos, pressão e situações delicadas mantendo a integridade.</p>
+<button onclick="nextSection('treinamento5')">Próximo</button>
+<button onclick="nextSection('treinamento3')">Anterior</button>
+</div>
+
+<!-- Módulo 5 -->
+<div id="treinamento5" class="section">
+<h2>Comunicação Interna e Externa</h2>
+<p>Aprenda técnicas de comunicação eficaz dentro da empresa e com clientes externos.</p>
+<p>Exercício: redija um e-mail corporativo com base em um cenário fictício.</p>
+<p>Abordamos comunicação verbal, escrita e uso de ferramentas corporativas.</p>
+<p>Histórias mostram resultados positivos de comunicação clara e objetiva.</p>
+<p>Dicas de apresentação, feedback e reuniões produtivas.</p>
+<p>Reflexão: identifique erros comuns de comunicação e como evitá-los.</p>
+<p>Exercício prático: criar uma mensagem de alinhamento para equipe.</p>
+<p>Aprenda a adaptar a comunicação para diferentes públicos e contextos.</p>
+<p>O módulo reforça a importância de transmitir informações precisas e claras.</p>
+<p>Ao final, você terá habilidades para melhorar o fluxo de informação em qualquer situação.</p>
+<button onclick="nextSection('treinamento6')">Próximo</button>
+<button onclick="nextSection('treinamento4')">Anterior</button>
+</div>
+
+<!-- Módulo 6 -->
+<div id="treinamento6" class="section">
+<h2>Gestão de Tempo e Produtividade</h2>
+<p>Este módulo aborda técnicas de organização pessoal e produtividade.</p>
+<p>Exercício: crie uma lista de prioridades para sua semana de trabalho.</p>
+<p>Dicas sobre métodos como Pomodoro, listas de tarefas e planejamento diário.</p>
+<p>Histórias fictícias mostram como colaboradores melhoraram desempenho com gestão de tempo.</p>
+<p>Reflexão: identifique atividades que consomem tempo sem gerar resultados.</p>
+<p>Exercício prático: crie um cronograma de atividades baseado em prioridades.</p>
+<p>O módulo ensina a balancear tarefas urgentes e importantes.</p>
+<p>Ao final, você saberá como aumentar sua eficiência e entregar resultados consistentes.</p>
+<p>Inclui técnicas para evitar procrastinação e aumentar foco.</p>
+<p>Você aprenderá como delegar tarefas de forma eficaz.</p>
+<button onclick="nextSection('treinamento7')">Próximo</button>
+<button onclick="nextSection('treinamento5')">Anterior</button>
+</div>
+
+<!-- Módulo 7 -->
+<div id="treinamento7" class="section">
+<h2>Atendimento ao Cliente</h2>
+<p>Este módulo ensina boas práticas de atendimento interno e externo.</p>
+<p>Exercício: simule atendimento a um cliente fictício.</p>
+<p>Aborda empatia, escuta ativa, solução de problemas e follow-up.</p>
+<p>Histórias demonstram impacto do bom atendimento na satisfação e fidelização.</p>
+<p>Dicas práticas para lidar com clientes difíceis ou situações de conflito.</p>
+<p>Reflexão: como você aplicaria técnicas aprendidas em situações reais?</p>
+<p>Exercícios práticos incluem feedbacks de atendimento simulados.</p>
+<p>O módulo reforça importância do cliente como parte central do negócio.</p>
+<p>Ao final, você terá ferramentas para resolver problemas e encantar clientes.</p>
+<p>Ensina como documentar interações e melhorar processos internos de atendimento.</p>
+<button onclick="nextSection('treinamento8')">Próximo</button>
+<button onclick="nextSection('treinamento6')">Anterior</button>
+</div>
+
+<!-- Módulo 8 -->
+<div id="treinamento8" class="section">
+<h2>Trabalho em Equipe</h2>
+<p>Este módulo apresenta dinâmicas de colaboração e cooperação.</p>
+<p>Exercício: descreva como contribuir positivamente para um projeto de equipe.</p>
+<p>Aborda papéis, responsabilidades e comunicação eficaz.</p>
+<p>Histórias mostram equipes bem-sucedidas aplicando técnicas de colaboração.</p>
+<p>Reflexão: identifique desafios comuns no trabalho em equipe e como superá-los.</p>
+<p>Dicas de liderança e motivação de colegas.</p>
+<p>Exercícios práticos incluem simulações de decisões coletivas.</p>
+<p>Ao final, você entenderá a importância de sinergia e alinhamento em projetos.</p>
+<p>Inclui técnicas de resolução de conflitos internos.</p>
+<p>Você aprenderá a equilibrar opiniões e alcançar consenso.</p>
+<button onclick="nextSection('treinamento9')">Próximo</button>
+<button onclick="nextSection('treinamento7')">Anterior</button>
+</div>
+
+<!-- Módulo 9 -->
+<div id="treinamento9" class="section">
+<h2>Inovação e Criatividade</h2>
+<p>Aprenda técnicas para gerar ideias inovadoras e propor melhorias nos processos.</p>
+<p>Exercício: proponha uma ideia de melhoria para sua área.</p>
+<p>Histórias mostram exemplos de soluções criativas implementadas com sucesso.</p>
+<p>Dicas para estimular pensamento crítico e criatividade.</p>
+<p>Reflexão: identifique oportunidades de inovação em atividades diárias.</p>
+<p>Exercícios práticos: brainstorming e análise de soluções.</p>
+<p>Ao final, você estará apto a contribuir com ideias inovadoras na empresa.</p>
+<p>Inclui técnicas de prototipagem e validação de ideias.</p>
+<p>Mostra como integrar inovação ao trabalho cotidiano.</p>
+<p>Reforça a importância de documentar e apresentar ideias de forma clara.</p>
+<button onclick="nextSection('treinamento10')">Próximo</button>
+<button onclick="nextSection('treinamento8')">Anterior</button>
+</div>
+
+<!-- Módulo 10 -->
+<div id="treinamento10" class="section">
+<h2>Ferramentas e Sistemas Internos</h2>
+<p>Este módulo ensina a usar todas as ferramentas e sistemas internos da empresa.</p>
+<p>Exercício: acessar e configurar sua conta em cada ferramenta.</p>
+<p>Dicas de navegação, configuração e uso eficiente de cada sistema.</p>
+<p>Histórias fictícias mostram problemas evitados pelo uso correto das ferramentas.</p>
+<p>Reflexão: como você aplicaria ferramentas para aumentar produtividade?</p>
+<p>Exercícios práticos incluem envio de relatórios, agendamento e organização.</p>
+<p>Ao final, você terá domínio básico para operar sistemas internos.</p>
+<p>Inclui técnicas de resolução de problemas comuns.</p>
+<p>Enfatiza segurança de dados e backups.</p>
+<p>Prepara você para trabalhar de forma autônoma com sistemas corporativos.</p>
+<button onclick="nextSection('treinamento11')">Próximo</button>
+<button onclick="nextSection('treinamento9')">Anterior</button>
+</div>
+
+<!-- Módulo 11 -->
+<div id="treinamento11" class="section">
+<h2>Compliance e Regulamentações</h2>
+<p>Entenda regras legais e regulatórias aplicáveis à Air Bla.</p>
+<p>Exercício: identifique situações de risco de não conformidade.</p>
+<p>Histórias mostram consequências de não seguir regulamentações.</p>
+<p>Dicas de monitoramento, relatórios e conformidade diária.</p>
+<p>Reflexão: como você garantiria que seu setor esteja em conformidade?</p>
+<p>Exercícios práticos: checklist de compliance.</p>
+<p>Ao final, você saberá identificar e atuar em situações de risco.</p>
+<p>Inclui treinamento sobre ética e integridade.</p>
+<p>Preparação para auditorias internas.</p>
+<p>Reforça importância da conformidade em decisões estratégicas.</p>
+<button onclick="nextSection('treinamento12')">Próximo</button>
+<button onclick="nextSection('treinamento10')">Anterior</button>
+</div>
+
+<!-- Módulo 12 -->
+<div id="treinamento12" class="section">
+<h2>Qualidade e Melhoria Contínua</h2>
+<p>Aprenda a implementar práticas de qualidade e melhoria contínua em processos internos.</p>
+<p>Exercício: proponha uma melhoria em seu setor.</p>
+<p>Histórias mostram impactos positivos de melhorias implementadas.</p>
+<p>Dicas para monitorar resultados e ajustar processos.</p>
+<p>Reflexão: identifique um processo que pode ser otimizado.</p>
+<p>Exercícios práticos incluem medição e análise de resultados.</p>
+<p>Ao final, você será capaz de aplicar melhoria contínua em atividades diárias.</p>
+<p>Inclui técnicas de Kaizen, PDCA e controle de qualidade.</p>
+<p>Mostra importância da documentação das melhorias.</p>
+<p>Reforça papel do colaborador na melhoria da empresa.</p>
+<button onclick="nextSection('treinamento13')">Próximo</button>
+<button onclick="nextSection('treinamento11')">Anterior</button>
+</div>
+
+<!-- Módulo 13 -->
+<div id="treinamento13" class="section">
+<h2>Gestão de Conflitos</h2>
+<p>Este módulo ensina técnicas de mediação e resolução de conflitos.</p>
+<p>Exercício: descreva um conflito hipotético e como resolveria.</p>
+<p>Histórias mostram soluções eficazes aplicadas em situações reais.</p>
+<p>Dicas de comunicação, empatia e negociação.</p>
+<p>Reflexão: identifique conflitos comuns em seu ambiente de trabalho.</p>
+<p>Exercícios práticos: simulação de mediação.</p>
+<p>Ao final, você saberá resolver conflitos mantendo relacionamentos saudáveis.</p>
+<p>Inclui prevenção e gerenciamento de situações delicadas.</p>
+<p>Mostra impacto da resolução de conflitos na produtividade.</p>
+<p>Reforça habilidades de liderança e cooperação.</p>
+<button onclick="nextSection('treinamento14')">Próximo</button>
+<button onclick="nextSection('treinamento12')">Anterior</button>
+</div>
+
+<!-- Módulo 14 -->
+<div id="treinamento14" class="section">
+<h2>Treinamento Técnico Específico</h2>
+<p>Este módulo oferece conhecimento técnico necessário para seu setor.</p>
+<p>Exercício: execute uma tarefa prática fictícia baseada no seu setor.</p>
+<p>Histórias fictícias mostram resultados de aplicação correta do conhecimento técnico.</p>
+<p>Dicas de eficiência e precisão.</p>
+<p>Reflexão: como melhorar performance com técnicas aprendidas?</p>
+<p>Exercícios práticos: checklists e simulações.</p>
+<p>Ao final, você terá base técnica suficiente para atuar com confiança.</p>
+<p>Inclui boas práticas e padrões internos.</p>
+<p>Reforça importância de atualização constante.</p>
+<p>Mostra aplicação prática em processos reais.</p>
+<button onclick="nextSection('treinamento15')">Próximo</button>
+<button onclick="nextSection('treinamento13')">Anterior</button>
+</div>
+
+<!-- Módulo 15 -->
+<div id="treinamento15" class="section">
+<h2>Atendimento a Incidentes</h2>
+<p>Aprenda como lidar com incidentes internos e externos de forma segura e organizada.</p>
+<p>Exercício: simule resposta a um incidente fictício.</p>
+<p>Histórias mostram respostas rápidas que evitaram impactos maiores.</p>
+<p>Dicas de protocolos, comunicação e registro de incidentes.</p>
+<p>Reflexão: como priorizar ações em situações críticas?</p>
+<p>Exercícios práticos: checklist de incidentes.</p>
+<p>Ao final, você terá habilidades para agir com segurança e eficiência.</p>
+<p>Inclui técnicas de prevenção e mitigação.</p>
+<p>Mostra importância da documentação de incidentes.</p>
+<p>Reforça responsabilidade individual e coletiva.</p>
+<button onclick="nextSection('treinamento16')">Próximo</button>
+<button onclick="nextSection('treinamento14')">Anterior</button>
+</div>
+
+<!-- Módulo 16 -->
+<div id="treinamento16" class="section">
+<h2>Treinamento de Liderança</h2>
+<p>Este módulo desenvolve habilidades de liderança, mesmo para colaboradores que não são gestores.</p>
+<p>Exercício: descreva como lideraria uma equipe em um projeto fictício.</p>
+<p>Histórias mostram líderes eficazes que inspiraram equipes.</p>
+<p>Dicas de motivação, delegação e tomada de decisão.</p>
+<p>Reflexão: identifique oportunidades de liderar de forma informal.</p>
+<p>Exercícios práticos: simulações de liderança e feedback.</p>
+<p>Ao final, você terá noções básicas para inspirar e guiar colegas.</p>
+<p>Inclui comunicação assertiva e resolução de problemas.</p>
+<p>Mostra impacto da liderança no clima e resultados.</p>
+<p>Reforça a importância da ética e exemplo pessoal.</p>
+<button onclick="nextSection('treinamento17')">Próximo</button>
+<button onclick="nextSection('treinamento15')">Anterior</button>
+</div>
+
+<!-- Módulo 17 -->
+<div id="treinamento17" class="section">
+<h2>Treinamento de Vendas</h2>
+<p>Para setores comerciais, este módulo ensina técnicas de vendas e negociação.</p>
+<p>Exercício: simule negociação com cliente fictício.</p>
+<p>Histórias mostram vendas bem-sucedidas aplicando técnicas aprendidas.</p>
+<p>Dicas de argumentação, rapport e fechamento de vendas.</p>
+<p>Reflexão: identifique oportunidades de melhorar desempenho comercial.</p>
+<p>Exercícios práticos: estudo de caso de vendas.</p>
+<p>Ao final, você terá habilidades para atuar de forma estratégica em vendas.</p>
+<p>Inclui técnicas de pós-venda e fidelização.</p>
+<p>Mostra como integrar vendas à satisfação do cliente.</p>
+<p>Reforça importância de ética e transparência.</p>
+<button onclick="nextSection('treinamento18')">Próximo</button>
+<button onclick="nextSection('treinamento16')">Anterior</button>
+</div>
+
+<!-- Módulo 18 -->
+<div id="treinamento18" class="section">
+<h2>Treinamento de Marketing</h2>
+<p>Aprenda conceitos básicos de marketing, branding e comunicação externa.</p>
+<p>Exercício: crie uma campanha fictícia para promover um produto.</p>
+<p>Histórias mostram impactos de campanhas bem planejadas.</p>
+<p>Dicas de planejamento, segmentação e análise de resultados.</p>
+<p>Reflexão: identifique ações de marketing que podem melhorar resultados.</p>
+<p>Exercícios práticos: criação de conteúdo e análise de público.</p>
+<p>Ao final, você terá noções básicas de marketing aplicáveis ao dia a dia.</p>
+<p>Inclui técnicas de mensuração e melhoria contínua.</p>
+<p>Mostra importância da comunicação coerente com a marca.</p>
+<p>Reforça alinhamento entre marketing e demais setores.</p>
+<button onclick="nextSection('treinamento19')">Próximo</button>
+<button onclick="nextSection('treinamento17')">Anterior</button>
+</div>
+
+<!-- Módulo 19 -->
+<div id="treinamento19" class="section">
+<h2>Treinamento de Logística e Operações</h2>
+<p>Aprenda sobre processos logísticos, cadeia de suprimentos e operações internas.</p>
+<p>Exercício: crie plano fictício de entrega ou operação.</p>
+<p>Histórias mostram soluções eficientes que evitaram atrasos e perdas.</p>
+<p>Dicas de planejamento, organização e controle de operações.</p>
+<p>Reflexão: como otimizar processos internos para maior eficiência?</p>
+<p>Exercícios práticos: checklist e monitoramento de processos.</p>
+<p>Ao final, você terá visão prática de operação eficiente.</p>
+<p>Inclui técnicas de rastreamento, controle de estoque e planejamento.</p>
+<p>Mostra importância da integração entre setores.</p>
+<p>Reforça responsabilidade individual e coletiva.</p>
+<button onclick="nextSection('treinamento20')">Próximo</button>
+<button onclick="nextSection('treinamento18')">Anterior</button>
+</div>
+
+<!-- Módulo 20 -->
+<div id="treinamento20" class="section">
+<h2>Resumo e Boas Práticas</h2>
+<p>Este módulo consolida conhecimentos dos 19 módulos anteriores.</p>
+<p>Exercício: escreva um plano pessoal de aplicação dos aprendizados.</p>
+<p>Histórias mostram aplicação de boas práticas em projetos reais.</p>
+<p>Dicas de revisão, reforço de conhecimento e autoavaliação.</p>
+<p>Reflexão: identifique ações de melhoria contínua para seu desempenho.</p>
+<p>Exercícios práticos: checklist final de boas práticas.</p>
+<p>Ao final, você terá consolidado todo o conteúdo do treinamento.</p>
+<p>Inclui estratégias de acompanhamento e melhoria contínua.</p>
+<p>Mostra importância de manter atualização e engajamento constante.</p>
+<p>Reforça valores, cultura e práticas da Air Bla.</p>
+<button onclick="nextSection('quizzes')">Próximo</button>
+<button onclick="nextSection('treinamento19')">Anterior</button>
+</div>
+
+<!-- Quizzes -->
+<div id="quizzes" class="section">
+<h2>Quizzes de Fixação</h2>
+<div id="quizList">
+<div class="quiz">
+<p>1. Qual é o valor central da cultura Air Bla?</p>
+<input type="radio" name="q1" value="a"> a) Competição<br>
+<input type="radio" name="q1" value="b"> b) Colaboração<br>
+<input type="radio" name="q1" value="c"> c) Individualismo<br>
+</div>
+<div class="quiz">
+<p>2. Qual prática é essencial para segurança de TI?</p>
+<input type="radio" name="q2" value="a"> a) Compartilhar senhas<br>
+<input type="radio" name="q2" value="b"> b) Criar senhas fortes<br>
+<input type="radio" name="q2" value="c"> c) Ignorar backups<br>
+</div>
+<!-- Adicione mais quizzes conforme necessário -->
+<button onclick="checarQuizzes()">Enviar Respostas</button>
+</div>
+<div id="resultadoQuiz"></div>
+</div>
+
+</div>
+
+<script>
+// Funções de navegação
+function nextSection(id){
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+// Checklist automático
+const checklistItens = [
+  "Completar perfil",
+  "Concluir módulo 1",
+  "Concluir módulo 2",
+  "Concluir módulo 3",
+  "Concluir módulo 4",
+  "Concluir módulo 5",
+  "Concluir módulo 6",
+  "Concluir módulo 7",
+  "Concluir módulo 8",
+  "Concluir módulo 9",
+  "Concluir módulo 10",
+  "Concluir módulo 11",
+  "Concluir módulo 12",
+  "Concluir módulo 13",
+  "Concluir módulo 14",
+  "Concluir módulo 15",
+  "Concluir módulo 16",
+  "Concluir módulo 17",
+  "Concluir módulo 18",
+  "Concluir módulo 19",
+  "Concluir módulo 20"
+];
+const checklistUl = document.getElementById('checklistList');
+checklistItens.forEach(item=>{
+  const li = document.createElement('li');
+  li.textContent = item;
+  li.classList.add('pending');
+  checklistUl.appendChild(li);
+});
+
+// Validar perfil
+function validarPerfil(){
+  const nome = document.getElementById('nome').value;
+  const email = document.getElementById('email').value;
+  const setor = document.getElementById('setor').value;
+  const gestor = document.getElementById('gestor').value;
+  const doc = document.getElementById('documento').files[0];
+  if(nome && email && setor && gestor && doc){
+    alert("Perfil validado com sucesso!");
+    document.querySelectorAll('#checklistList li')[0].classList.replace('pending','completed');
+    nextSection('checklist');
+    preencherTreinamentos();
+  } else {
+    alert("Preencha todos os campos antes de prosseguir.");
+  }
+}
+
+// Preencher lista de treinamentos
+function preencherTreinamentos(){
+  const ul = document.getElementById('treinamentosList');
+  for(let i=1;i<=20;i++){
+    const li = document.createElement('li');
+    li.textContent = "Módulo "+i;
+    li.onclick = ()=>nextSection('treinamento'+i);
+    ul.appendChild(li);
+  }
+}
+
+// Checar quizzes
+function checarQuizzes(){
+  let acertos = 0;
+  if(document.querySelector('input[name="q1"]:checked')?.value === 'b') acertos++;
+  if(document.querySelector('input[name="q2"]:checked')?.value === 'b') acertos++;
+  document.getElementById('resultadoQuiz').innerHTML = `Você acertou ${acertos} de 2 perguntas.`;
+  if(acertos===2) alert("Parabéns! Você concluiu o onboarding.");
+}
+</script>
+
+</body>
+</html>
