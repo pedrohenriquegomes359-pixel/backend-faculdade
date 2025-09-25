@@ -1,13 +1,16 @@
-// Importa o express
-const express = require('express');
+const express = require("express");
+const path = require("path");
 const app = express();
+const port = process.env.PORT || 3000;
 
-// Rota principal (quando abrir no navegador)
-app.get('/', (req, res) => {
-  res.send('Backend funcionando! 🚀');
+// Diz pro Express servir os arquivos da pasta "codigo"
+app.use(express.static(path.join(__dirname, "codigo")));
+
+// Rota principal -> abre seu index.html
+app.get("/", (req, res) => {
+  res.sendFile(path.join(__dirname, "codigo", "index.html"));
 });
 
-// Define a porta (3000)
-app.listen(3000, () => {
-  console.log('Servidor rodando em http://localhost:3000');
+app.listen(port, () => {
+  console.log(`Servidor rodando na porta ${port}`);
 });
