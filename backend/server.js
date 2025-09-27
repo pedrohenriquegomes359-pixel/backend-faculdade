@@ -1,16 +1,17 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const port = process.env.PORT || 3000;
 
-// Diz pro Express servir os arquivos da pasta "codigo"
-app.use(express.static(path.join(__dirname, "codigo")));
+const PORT = process.env.PORT || 3000;
 
-// Rota principal -> abre seu index.html
+// Servir arquivos estáticos da raiz do projeto
+app.use(express.static(path.join(__dirname, "..")));
+
+// Rota padrão que entrega o index.html da raiz
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "codigo", "index.html"));
+  res.sendFile(path.join(__dirname, "..", "index.html"));
 });
 
-app.listen(port, () => {
-  console.log(`Servidor rodando na porta ${port}`);
+app.listen(PORT, () => {
+  console.log(`Servidor rodando na porta ${PORT}`);
 });
