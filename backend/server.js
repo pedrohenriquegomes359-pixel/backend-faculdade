@@ -4,12 +4,12 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
-// Servir arquivos estáticos da raiz do projeto
-app.use(express.static(path.join(__dirname, "..")));
+// Servir os arquivos estáticos da pasta backend
+app.use(express.static(__dirname));
 
-// Rota padrão que entrega o index.html da raiz
+// Rota padrão
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "..", "index.html"));
+  res.sendFile(path.join(__dirname, "index.html"));
 });
 
 app.listen(PORT, () => {
